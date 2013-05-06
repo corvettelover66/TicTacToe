@@ -1,0 +1,8 @@
+package edu.neumont.csc380.models;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="player")
+public class Player {
+
+}
