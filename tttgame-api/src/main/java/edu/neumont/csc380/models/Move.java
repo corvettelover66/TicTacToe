@@ -12,6 +12,9 @@ public class Move {
 		this.column = column;
 	}
 	
+	@XmlElement(name="type")
+	private char type;
+	
 	@XmlElement(name="column")
 	private int column;
 	

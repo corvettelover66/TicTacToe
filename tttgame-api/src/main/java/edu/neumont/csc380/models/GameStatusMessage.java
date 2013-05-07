@@ -11,7 +11,7 @@ public class GameStatusMessage {
 	private Player player;
 	
 	@XmlElement(name="moves")
-	private boolean[][] moves;
+	private Move[] moves;
 
 	@XmlTransient
 	public Player getPlayer() {
@@ -23,11 +23,11 @@ public class GameStatusMessage {
 	}
 	
 	@XmlTransient
-	public boolean[][] getMoves() {
+	public Move[] getMoves() {
 		return moves;
 	}
 
-	public void setMoves(boolean[][] moves) {
+	public void setMoves(Move[] moves) {
 		this.moves = moves;
 	}
 }
