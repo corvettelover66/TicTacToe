@@ -21,7 +21,7 @@
 	<camel:proxy
   		id="tTTGameService"
   		serviceInterface="edu.neumont.csc380.services.TTTGameService"
-  		serviceUrl="jms:queue:game" camelContextId="camel-client" />
+  		serviceUrl="jms:queue:games" camelContextId="camel-client" />
 	
 	<!-- lets configure the Camel ActiveMQ to use the embedded ActiveMQ broker declared above -->
 	<bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
