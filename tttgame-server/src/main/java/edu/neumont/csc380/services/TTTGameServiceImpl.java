@@ -1,5 +1,8 @@
 package edu.neumont.csc380.services;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+
 import org.springframework.stereotype.Service;
 
 import edu.neumont.csc380.models.Game;
@@ -12,13 +15,23 @@ import edu.neumont.csc380.models.Player;
 public class TTTGameServiceImpl implements TTTGameService {
 
 	public Game newGame() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Game();
 	}
 
-	public Player addPlayer(Game game, Key key) {
-		// TODO Auto-generated method stub
-		return null;
+	public Player addPlayer(Game game, Key key){
+		Player player = null;
+		try {
+			KeyPair keyPair = generateKeyPair();
+			player = new Player(keyPair.getPublic());
+			if(game.getPlayerOne() == null) game.setPlayerOne(player);
+			else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
+		}
+		// Handle different exceptions
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return player;
 	}
 
 	public GameStatusMessage start(Game game) {
@@ -29,6 +42,16 @@ public class TTTGameServiceImpl implements TTTGameService {
 	public GameStatusMessage move(Move move, Player player) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private KeyPair generateKeyPair() throws Exception {
+		KeyPairGenerator kpGen = KeyPairGenerator.getInstance("RSA");
+		kpGen.initialize(2048);
+		KeyPair keyPair = kpGen.generateKeyPair();
+		
+		KeyStorage.addKeyPair(keyPair);
+			
+		return keyPair;	
 	}
 
 }
