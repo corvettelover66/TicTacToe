@@ -1,8 +1,10 @@
 package edu.neumont.csc380.models;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement(name="move")
 public class Move {
 	
 	public Move(){}
@@ -12,8 +14,8 @@ public class Move {
 		this.column = column;
 	}
 	
-	@XmlElement(name="type")
-	private char type;
+	@XmlElement(name="piece")
+	private Piece piece;
 	
 	@XmlElement(name="column")
 	private int column;

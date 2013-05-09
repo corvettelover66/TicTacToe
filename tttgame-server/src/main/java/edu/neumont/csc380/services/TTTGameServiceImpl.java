@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import edu.neumont.csc380.models.Game;
 import edu.neumont.csc380.models.GameStatusMessage;
-import edu.neumont.csc380.models.Key;
 import edu.neumont.csc380.models.Move;
 import edu.neumont.csc380.models.Player;
 
@@ -19,7 +18,7 @@ public class TTTGameServiceImpl implements TTTGameService {
 		return new Game();
 	}
 
-	public Player addPlayer(Game game, Key key){
+	public Player addPlayer(Game game){
 		Player player = null;
 		try {
 			KeyPair keyPair = generateKeyPair();

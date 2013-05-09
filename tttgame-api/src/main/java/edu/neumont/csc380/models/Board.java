@@ -1,23 +1,25 @@
 package edu.neumont.csc380.models;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="board")
 public class Board 
 {
-	@XmlElement(name="board")
-	private String[][] board;
+	@XmlElement(name="tiles")
+	private String[][] tiles;
 	
 	public Board()
 	{
-		board = new String[3][3];
+		tiles = new String[3][3];
 	}
 	
 	public String[][] getBoard() {
-		return board;
+		return tiles;
 	}
 	
 	public void setBoard(String[][] board) {
-		this.board = board;
+		this.tiles = board;
 	}
 	
 	@Override
@@ -25,10 +27,10 @@ public class Board
 	{
 		String result = "";
 		// Example toString(): (xoEMPTY),(xEMPTYo),(oEMPTYx)
-		for(int row = 0; row < board.length; row++) {
+		for(int row = 0; row < tiles.length; row++) {
 			result += "(";
-			for(int column = 0; column < board.length; column++) {
-				result += board[row][column];
+			for(int column = 0; column < tiles.length; column++) {
+				result += tiles[row][column];
 			}
 			result += "),";
 		}

@@ -4,7 +4,7 @@ package edu.neumont.csc380.models;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
+ 
 @XmlRootElement(name = "player")
 public class Player {
 
