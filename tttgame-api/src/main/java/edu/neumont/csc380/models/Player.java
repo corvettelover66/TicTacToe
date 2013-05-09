@@ -24,7 +24,7 @@ public class Player {
 	public Move makeMove(int row, int col) {
 		return new Move(row, col);
 	}
-
+	
 	@XmlTransient
 	public Piece getPiece() {
 		return piece;

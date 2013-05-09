@@ -13,10 +13,29 @@ public class GameStatusMessage {
 	@XmlElement(name="board")
 	private Board board;
 	
+	@XmlElement(name="game")
+	private Game game;
+	
 	public GameStatusMessage(){
 		board = new Board();
 	}
-	
+	public Player start(Game game)
+	{
+		game.getBoard().toString();
+		// TODO: Return an actual player
+		return currentPlayer;
+	}
+	public void move(Move move, Player player)
+	{
+//		if(!player.isTurn())
+//		{
+//			throw new NotYourTurnException();
+//		}
+//		else
+//		{
+//			// TODO: add the move to the board
+//		}
+	}
 	@XmlTransient
 	public Player getCurrentPlayer() {
 		return currentPlayer;

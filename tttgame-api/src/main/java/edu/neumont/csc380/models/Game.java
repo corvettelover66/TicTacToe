@@ -12,6 +12,7 @@ public class Game {
 	public Game(){
 		this.id = UUID.randomUUID().toString();	
 	}
+	Board board = new Board();
 	
 	@XmlElement(name="id")
 	private String id;
@@ -25,6 +26,10 @@ public class Game {
 	@XmlElement(name="status")
 	private GameStatusMessage currentStatus;
 	
+	public Game newGame()
+	{
+		return new Game();
+	}
 	@XmlTransient
 	public Player getPlayerOne() {
 		return playerOne;
@@ -58,5 +63,14 @@ public class Game {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 }
