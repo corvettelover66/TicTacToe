@@ -1,33 +1,40 @@
 package edu.neumont.csc380.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement(name="gameStatusMessage")
 public class GameStatusMessage {
 	
-	public GameStatusMessage(){}
-	
 	@XmlElement(name="player")
-	private Player player;
+	private Player currentPlayer;
 	
-	@XmlElement(name="moves")
-	private Move[] moves;
-
-	@XmlTransient
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
+	@XmlElement(name="board")
+	private Board board;
+	
+	public GameStatusMessage(){
+		board = new Board();
 	}
 	
 	@XmlTransient
-	public Move[] getMoves() {
-		return moves;
+	public Player getCurrentPlayer() {
+		return currentPlayer;
 	}
 
-	public void setMoves(Move[] moves) {
-		this.moves = moves;
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+	
+	@XmlTransient
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 }

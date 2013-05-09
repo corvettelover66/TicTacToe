@@ -2,6 +2,7 @@ package edu.neumont.csc380.services;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.stereotype.Service;
 
@@ -27,10 +28,9 @@ public class TTTGameServiceImpl implements TTTGameService {
 			else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
 		}
 		// Handle different exceptions
-		catch (Exception e) {
+		catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		
 		return player;
 	}
 
@@ -44,7 +44,7 @@ public class TTTGameServiceImpl implements TTTGameService {
 		return null;
 	}
 	
-	private KeyPair generateKeyPair() throws Exception {
+	private KeyPair generateKeyPair() throws NoSuchAlgorithmException {
 		KeyPairGenerator kpGen = KeyPairGenerator.getInstance("RSA");
 		kpGen.initialize(2048);
 		KeyPair keyPair = kpGen.generateKeyPair();
