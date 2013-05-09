@@ -12,15 +12,22 @@ public class Player {
 	@XmlElement(name="id")
 	private PublicKey id;
 	
-	public Player(PublicKey id){
+	@XmlElement(name="type")
+	private char type;
+	
+	public Player(PublicKey id, char type){
 		this.id = id;
+		this.type = type;
 	}
 	
-	public Move makeMove(int row, int col)
-	{
+	public Move makeMove(int row, int col){
 		return new Move(row, col);
 	}
 
+	@XmlTransient
+	public char getType() {
+		return type;
+	}
 	@XmlTransient
 	public PublicKey getId() {
 		return id;

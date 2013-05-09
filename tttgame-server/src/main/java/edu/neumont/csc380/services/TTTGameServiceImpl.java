@@ -22,20 +22,24 @@ public class TTTGameServiceImpl implements TTTGameService {
 		Player player = null;
 		try {
 			KeyPair keyPair = generateKeyPair();
-			player = new Player(keyPair.getPublic());
-			if(game.getPlayerOne() == null) game.setPlayerOne(player);
-			else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
+			if(game.getPlayerOne() == null){
+				player = new Player(keyPair.getPublic(), 'X');
+				game.setPlayerOne(player);
+			}
+			else if(game.getPlayerTwo() == null){ 
+				player = new Player(keyPair.getPublic(), 'O');
+				game.setPlayerTwo(player);
+			}
 		}
-		// Handle different exceptions
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return player;
 	}
 
 	public GameStatusMessage start(Game game) {
 		// TODO Auto-generated method stub
+		GameStatusMessage message = new GameStatusMessage();
 		return null;
 	}
 
