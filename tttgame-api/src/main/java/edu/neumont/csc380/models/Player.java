@@ -1,6 +1,5 @@
 package edu.neumont.csc380.models;
 
-import java.security.PublicKey;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,7 +9,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Player {
 
 	@XmlElement(name = "id")
-	private PublicKey id;
+	private String id;
 	
 	/*
 	 * Represents whether a player uses an X or an O for its moves
@@ -18,7 +17,7 @@ public class Player {
 	 */
 	private Piece piece;
 
-	public Player(PublicKey id) {
+	public Player(String id) {
 		this.id = id;
 	}
 	
@@ -37,7 +36,7 @@ public class Player {
 	}
 	
 	@XmlTransient
-	public PublicKey getId() {
+	public String getId() {
 		return id;
 	}
 }
