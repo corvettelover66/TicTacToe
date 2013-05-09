@@ -23,7 +23,6 @@ public class TTTGameServiceImpl implements TTTGameService {
 		Player player = null;
 		try {
 			KeyPair keyPair = generateKeyPair();
-			player = new Player(keyPair.getPublic());
 			if(game.getPlayerOne() == null) game.setPlayerOne(player);
 			else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
 		}

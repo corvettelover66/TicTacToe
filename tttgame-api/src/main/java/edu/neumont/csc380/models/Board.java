@@ -24,7 +24,7 @@ public class Board
 	public String toString()
 	{
 		String result = "";
-		// Example toString(): (xox),(xxo),(oox)
+		// Example toString(): (xoEMPTY),(xEMPTYo),(oEMPTYx)
 		for(int row = 0; row < board.length; row++) {
 			result += "(";
 			for(int column = 0; column < board.length; column++) {

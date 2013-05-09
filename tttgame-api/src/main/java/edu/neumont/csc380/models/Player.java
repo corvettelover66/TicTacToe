@@ -10,18 +10,32 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Player {
 
 	@XmlElement(name = "id")
-	Piece piece;
 	private PublicKey id;
+	
+	/*
+	 * Represents whether a player uses an X or an O for its moves
+	 * No need to include this in the XML
+	 */
+	private Piece piece;
 
-	public Player(PublicKey id, Piece piece) {
+	public Player(PublicKey id) {
 		this.id = id;
-		this.piece = piece;
 	}
-
+	
 	public Move makeMove(int row, int col) {
 		return new Move(row, col);
 	}
 
+	@XmlTransient
+	public Piece getPiece() {
+		return piece;
+	}
+	
+	@XmlTransient
+	public void setPiece(Piece piece) {
+		this.piece = piece; 
+	}
+	
 	@XmlTransient
 	public PublicKey getId() {
 		return id;
