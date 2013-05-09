@@ -6,18 +6,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="board")
 public class Board 
 {
-<<<<<<< HEAD
 	@XmlElement(name="tiles")
 	private String[][] tiles;
-=======
+	
 	@XmlElement(name="board")
 	private String[][] board;
 	public Board() {}
->>>>>>> Changed GameStatusMessage class
 	
 	public Board(String[][] board)
 	{
-<<<<<<< HEAD
 		tiles = new String[3][3];
 	}
 	
@@ -27,9 +24,8 @@ public class Board
 	
 	public void setBoard(String[][] board) {
 		this.tiles = board;
-=======
+
 		this.board = board;
->>>>>>> Changed GameStatusMessage class
 	}
 	
 	@Override
