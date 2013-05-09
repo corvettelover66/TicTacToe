@@ -1,9 +1,6 @@
 package edu.neumont.csc380.services;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-
+import java.security.Key;
 import org.springframework.stereotype.Service;
 
 import edu.neumont.csc380.models.Game;
@@ -18,18 +15,11 @@ public class TTTGameServiceImpl implements TTTGameService {
 		return new Game();
 	}
 
-	public Player addPlayer(Game game){
+	public Player addPlayer(Game game, Key playerPublicKey){
 		Player player = null;
-		try {
-			KeyPair keyPair = generateKeyPair();
-			player = new Player(keyPair.getPublic().toString());
-			if(game.getPlayerOne() == null) game.setPlayerOne(player);
-			else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
-		}
-		// Handle different exceptions
-		catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+		player = new Player(playerPublicKey.toString());
+		if(game.getPlayerOne() == null) game.setPlayerOne(player);
+		else if(game.getPlayerTwo() == null) game.setPlayerTwo(player);
 		return player;
 	}
 
@@ -42,15 +32,4 @@ public class TTTGameServiceImpl implements TTTGameService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	private KeyPair generateKeyPair() throws NoSuchAlgorithmException {
-		KeyPairGenerator kpGen = KeyPairGenerator.getInstance("RSA");
-		kpGen.initialize(2048);
-		KeyPair keyPair = kpGen.generateKeyPair();
-		
-		KeyStorage.addKeyPair(keyPair);
-			
-		return keyPair;	
-	}
-
 }
