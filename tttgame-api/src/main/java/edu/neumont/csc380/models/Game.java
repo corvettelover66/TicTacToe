@@ -6,6 +6,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * 
+ * @authors Marlo Castro, Josh Jones, Douglas Romines, Curtis Knox
+ * The Game class is given a random unique ID when instantiated.
+ * It contains a Board object, Player one and Player two objects,
+ * and a GameStatusMessage.
+ */
 @XmlRootElement(name="game")
 public class Game {
 	

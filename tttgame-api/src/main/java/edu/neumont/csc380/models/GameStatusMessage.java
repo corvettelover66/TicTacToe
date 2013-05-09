@@ -4,6 +4,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * @authors Marlo Castro, Josh Jones, Douglas Romines, Curtis Knox
+ * A GameStatusMessage contains a Board that represents the slots in the board. 
+ * It contains a Game that represents which Game it belongs to.
+ * It has a Player object that represents the player in turn. 
+ */
 @XmlRootElement(name="gameStatusMessage")
 public class GameStatusMessage {
 	
@@ -19,6 +25,7 @@ public class GameStatusMessage {
 	public GameStatusMessage(){
 		board = new Board();
 	}
+	
 	public Player start(Game game)
 	{
 		game.getBoard().toString();
