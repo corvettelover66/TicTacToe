@@ -11,5 +11,5 @@ public interface TTTGameService {
 	Game newGame();
 	Player addPlayer(Game game, Key publicPlayerKey);
 	GameStatusMessage start(Game game);
-	GameStatusMessage move(Move move, Player player);
+	GameStatusMessage move(Game game, Move move, Player player);
 }

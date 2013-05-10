@@ -1,6 +1,8 @@
 package edu.neumont.csc380.services;
 
 import java.security.Key;
+import java.security.KeyPair;
+
 import org.springframework.stereotype.Service;
 
 import edu.neumont.csc380.models.Game;
@@ -15,6 +17,7 @@ public class TTTGameServiceImpl implements TTTGameService {
 		return new Game();
 	}
 
+	// Adds a player to a particular game
 	public Player addPlayer(Game game, Key playerPublicKey){
 		Player player = null;
 		player = new Player(playerPublicKey.toString());
@@ -23,13 +26,33 @@ public class TTTGameServiceImpl implements TTTGameService {
 		return player;
 	}
 
+	// Start the game with Player one taking the first turn
 	public GameStatusMessage start(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		KeyGenServiceImpl keyGen = new KeyGenServiceImpl();
+		KeyPair keyPair;
+		try {
+			keyPair = keyGen.generateKeyPair();
+			game.setPlayerOne(new Player(keyPair.getPublic().toString()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		GameStatusMessage gsm = new GameStatusMessage();
+		gsm.setBoard(game.getBoard());
+		gsm.setCurrentPlayer(game.getPlayerOne());
+		
+		return gsm;
 	}
 
-	public GameStatusMessage move(Move move, Player player) {
-		// TODO Auto-generated method stub
-		return null;
+	// Make a move on a particular game
+	public GameStatusMessage move(Game game, Move move, Player player) {
+		game.getBoard().getTiles()[move.getRow()][move.getColumn()] = player.getPiece().toString();
+		GameStatusMessage gsm = new GameStatusMessage();
+		gsm.setBoard(game.getBoard());
+		Player newCurrentPlayer = null;
+		if(game.getPlayerOne().getId().equals(player.getId())) newCurrentPlayer = game.getPlayerTwo() ;
+		else newCurrentPlayer = game.getPlayerOne();
+		gsm.setCurrentPlayer(newCurrentPlayer);
+		
+		return gsm;
 	}
 }

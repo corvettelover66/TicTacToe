@@ -22,6 +22,11 @@ public class Board
 	public Board(String[][] board)
 	{
 		tiles = new String[3][3];
+		for(int row = 0; row < tiles.length; row++) {
+			for(int column = 0; column < tiles.length; column++) {
+				tiles[row][column] = Piece.E.toString();
+			}
+		}
 	}
 	
 	public String[][] getTiles() {
